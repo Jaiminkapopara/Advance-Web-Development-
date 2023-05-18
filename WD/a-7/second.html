@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script >
+        <body ng-app="myApp">
+            <table ng-controller="myCtrl" border="1">
+                <tr ng-repeat="x in records">
+                    <td>{{ x.input }} {{ x.output }}</td>
+                </tr>
+            </table>
+            <script>
+                var app = angular.module("myApp", []);
+                app.controller("myCtrl", function($scope) {
+$scope.records = [
+{"input": "Name:", "output": "James Bond",},
+{"input": "Age:", "output": "XX",}, 
+{"input": "Mobile:", "output": "85475995858",}, 
+{"input": "Emails", "output": "",}, 
+{"input": "Description: officialEmail:", "output": "james.bond@bond.com",}, 
+{"input": "Description: person1Email:", "output":"bond*****@yahoo.com",}, 
+{"input": "Description: person2Email:", "output":"bond*****@gmail.com",}
+]
+                });
+</script>
+</body>
+
+</html>
