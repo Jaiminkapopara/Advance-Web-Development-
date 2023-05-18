@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <!--import the angularjs libraries-->
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js">
+    </script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js">
+    </script>
+</head>
+
+<body>
+    <h1>Battlegrounds Mobile India</h1>
+    <h3>Single Page Web Application in AngularJS</h3>
+
+    <script type="text/ng-template" id="first.html">
+        <h1>Home Page</h1>
+        <h2 style="color:lightgreen">
+            Welcome to Battlegrounds Mobile India
+        </h2>
+        <h3>{{message}}</h3>
+    </script>
+
+    <script type="text/ng-template" id="second.html">
+        <h1>Main Page</h1>
+        <h2 style="color:lightgreen">
+            Start Playing Bgmi
+        </h2>
+        <h3>{{message}}</h3>
+    </script>
+     
+    <script type="text/ng-template" id="third.html">
+        <h1>About Us</h1>
+        <h2 style="color:lightgreen">
+            Know about us
+        </h2>
+        <h3>{{message}}</h3>
+    </script>
+
+    <nav class="nav">
+
+        <a href="#/">First</a>
+        <a href="#/second">Second</a>
+        <a href="#/third">Third</a>
+    </nav>
+
+    
+    <div ng-view></div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        var app = angular.module('myApp', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'first.html',
+                    controller: 'FirstController'
+                })
+
+                .when('/second', {
+                    templateUrl: 'second.html',
+                    controller: 'SecondController'
+                })
+
+                .when('/third', {
+                    templateUrl: 'third.html',
+                    controller: 'ThirdController'
+                })
+
+                .otherwise({ redirectTo: '/' });
+        });
+        app.controller('FirstController', function ($scope) {
+            $scope.message = 'Hello from FirstController';
+        });
+        app.controller('SecondController', function ($scope) {
+            $scope.message = 'Hello from SecondController';
+        });
+        app.controller('ThirdController', function ($scope) {
+            $scope.message = 'Hello from ThirdController';
+        });
+    </script>
+</body>
+
+</html>
